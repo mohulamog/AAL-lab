@@ -1,0 +1,67 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAX 100
+
+struct Edge {
+    int u, v, weight;
+};
+
+struct Edge edgeList[MAX];
+int parent[MAX];
+
+int find(int i) {
+    while (i != parent[i])
+        i = parent[i];
+    return i;
+}
+
+void unionSet(int u, int v) {
+    parent[find(u)] = find(v);
+}
+
+int compare(const void *a, const void *b) {
+    return ((struct Edge *)a)->weight - ((struct Edge *)b)->weight;
+}
+
+int main() {
+    int n, e, i, u, v, w;
+    int count, totalCost;
+    
+    printf("Enter number of vertices: ");
+    scanf("%d", &n);
+    
+    printf("Enter number of edges: ");
+    scanf("%d", &e);
+    
+    for (i = 0; i < e; i++) {
+        printf("Enter edge %d (u v weight): ", i + 1);
+        scanf("%d %d %d", &edgeList[i].u, &edgeList[i].v, &edgeList[i].weight);
+    }
+
+    for (i = 0; i < n; i++)
+        parent[i] = i;
+
+    qsort(edgeList, e, sizeof(struct Edge), compare);
+
+    count = 0;
+    totalCost = 0;
+
+    printf("Edges in MST:\n");
+    for (i = 0; i < e && count < n - 1; i++) {
+        u = edgeList[i].u;
+        v = edgeList[i].v;
+        w = edgeList[i].weight;
+
+        if (find(u) != find(v)) {
+            printf("%d - %d : %d\n", u, v, w);
+            unionSet(u, v);
+            totalCost += w;
+            count++;
+        }
+    }
+
+    printf("Total cost of MST: %d\n", totalCost);
+    return 0;
+}
+
