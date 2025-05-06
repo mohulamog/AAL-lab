@@ -1,0 +1,57 @@
+#include <stdio.h>
+#include <stdbool.h>
+
+#define N 8
+
+int board[N];
+
+bool isSafe(int row, int col) {
+    int i;
+    for (i = 0; i < row; i++) {
+        if (board[i] == col || board[i] - i == col - row || board[i] + i == col + row)
+            return false;
+    }
+    return true;
+}
+
+bool solveNQueens(int row) {
+    int col;
+    if (row == N) {
+        return true;
+    }
+
+    for (col = 0; col < N; col++) {
+        if (isSafe(row, col)) {
+            board[row] = col;
+            if (solveNQueens(row + 1)) {
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
+
+void printSolution() {
+    int i, j;
+    for (i = 0; i < N; i++) {
+        for (j = 0; j < N; j++) {
+            if (board[i] == j)
+                printf("Q ");
+            else
+                printf(". ");
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    int success;
+    success = solveNQueens(0);
+    if (success) {
+        printSolution();
+    } else {
+        printf("No solution exists for N = %d\n", N);
+    }
+    return 0;
+}
