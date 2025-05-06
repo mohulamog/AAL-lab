@@ -4,9 +4,11 @@
 
 #define N 4
 
-int tsp(int graph[N][N], bool visited[N], int pos, int count, int cost, int start) {
-    int ans, i, temp;
+int tsp(int graph[N][N], bool visited[N], int pos, int count, int cost, int start, int path[N + 1], int bestPath[N + 1]) {
+    int i, temp, ans;
     if (count == N && graph[pos][start]) {
+        path[count] = start;
+        for (i = 0; i <= N; i++) bestPath[i] = path[i];
         return cost + graph[pos][start];
     }
 
@@ -14,7 +16,8 @@ int tsp(int graph[N][N], bool visited[N], int pos, int count, int cost, int star
     for (i = 0; i < N; i++) {
         if (!visited[i] && graph[pos][i]) {
             visited[i] = true;
-            temp = tsp(graph, visited, i, count + 1, cost + graph[pos][i], start);
+            path[count] = i;
+            temp = tsp(graph, visited, i, count + 1, cost + graph[pos][i], start, path, bestPath);
             if (temp < ans) {
                 ans = temp;
             }
@@ -34,14 +37,21 @@ int main() {
     };
     bool visited[N];
     int i, result;
+    int path[N + 1], bestPath[N + 1];
 
-    for (i = 0; i < N; i++) {
-        visited[i] = false;
-    }
+    for (i = 0; i < N; i++) visited[i] = false;
 
     visited[0] = true;
-    result = tsp(graph, visited, 0, 1, 0, 0);
+    path[0] = 0;
+
+    result = tsp(graph, visited, 0, 1, 0, 0, path, bestPath);
 
     printf("Minimum cost: %d\n", result);
+    printf("Path: ");
+    for (i = 0; i <= N; i++) {
+        printf("%d ", bestPath[i]);
+    }
+    printf("\n");
+
     return 0;
 }
