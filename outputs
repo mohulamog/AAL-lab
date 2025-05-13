@@ -1,0 +1,123 @@
+**Bubble Sort**
+
+Enter the number of elements in the array: 10  
+array before bubble sort:  
+77 53 62 21 3 75 91 24 68 18  
+array after bubble sort:  
+3 18 21 24 53 62 68 75 77 91  
+Count: 45  
+Time taken for bubble sort: 0.000018 seconds
+---
+**selection sort**
+
+Enter the number of elements: 5
+Enter 5 elements:
+34 7 23 32 5
+Sorted array: 5 7 23 32 34
+
+
+---
+
+**pattern match**
+
+Enter the string:  
+hello  
+Enter the pattern:  
+ell  
+Pattern found at index 1
+
+---
+
+**Merge Sort**
+
+Enter the number of elements: 5  
+Enter 5 elements: 34 7 23 32 5  
+Sorted array: 5 7 23 32 34
+
+---
+
+**Quick Sort**
+
+Enter the number of elements: 6  
+Enter 6 elements: 21 45 12 3 9 87  
+Before sorting: 21 45 12 3 9 87  
+After sorting: 3 9 12 21 45 87
+
+---
+
+**Prim's Minimum Spanning Tree (MST)**
+
+Edge    Weight  
+0 - 1    2  
+1 - 2    3  
+0 - 3    6  
+3 - 4    5
+
+---
+
+**Kruskal's Algorithm (MST)**
+
+Enter number of vertices: 5  
+Enter number of edges: 7  
+Enter edge 1 (u v weight): 0 1 2  
+Enter edge 2 (u v weight): 0 3 6  
+Enter edge 3 (u v weight): 1 2 3  
+Enter edge 4 (u v weight): 1 3 8  
+Enter edge 5 (u v weight): 1 4 5  
+Enter edge 6 (u v weight): 2 3 7  
+Enter edge 7 (u v weight): 3 4 9  
+Edges in MST:  
+0 - 1 : 2  
+1 - 2 : 3  
+0 - 3 : 6  
+Total cost of MST: 11
+
+---
+
+**Insertion Sort**
+
+Sorted array: 11 12 22 25 64
+
+---
+
+**Heap Sort**
+
+Sorted array is  
+2 3 4 5 8 9 10
+
+---
+
+**Floyd-Warshall Algorithm (All-Pairs Shortest Path)**
+
+Shortest distances between every pair of vertices:  
+      0      5    INF     10  
+    INF      0      3    INF  
+    INF    INF      0      1  
+    INF    INF    INF      0
+
+---
+
+**Topological Sort (DFS-based)**
+
+Topological Sort:  
+5 4 2 3 1 0
+
+---
+
+**N-Queens Problem (8-Queens Solution)**
+
+Q . . . . . . .  
+. . . . Q . . .  
+. . . . . . Q .  
+. Q . . . . . .  
+. . . . . Q . .  
+. . . Q . . . .  
+. . . . . . . Q  
+. . Q . . . . .
+
+---
+
+**Traveling Salesman Problem (TSP)**
+
+Minimum cost: 80  
+Path: 0 1 3 2 0
